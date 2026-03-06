@@ -16,7 +16,9 @@ public class Client{
                 String riga = scanner.nextLine();
                 out.println(riga);    
             }
-        }catch(IOException e){}
+        }catch(IOException e){
+            e.printStackTrace();
+        }
 
     }
 }

@@ -4,12 +4,21 @@ import java.util.*;
 
 public class Server{
     public static void main(String [] args){
-        try(Socket socket = new Socket("localhost",8080)){
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        //while (true) {
+            
+        try(ServerSocket serversocket = new ServerSocket(8080)){
+            try(Socket client = serversocket.accept()){
+            PrintWriter out = new PrintWriter(client.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
             
             if(in.readLine()!=null) System.out.println("ciao");
             
-        }catch(IOException e){}
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }catch(IOException e){
+
+    }
+    //}
     }
 }
